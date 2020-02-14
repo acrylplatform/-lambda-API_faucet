@@ -6,12 +6,11 @@ branches:
   - master
 install:
   - npm install --only=prod
-script:
-  - npm run build
 deploy:
   - provider: lambda
     function_name: "faucet"
     region: "eu-central-1"
+    role: "arn:aws:iam::340336286833:role/service-role/faucet-role-qnkmakit"
     runtime: "nodejs10.x"
     handler_name: "handler"
     access_key_id: $AWS_ACCESS_KEY_ID
